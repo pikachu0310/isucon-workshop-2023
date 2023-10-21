@@ -5,6 +5,7 @@ import (
 	"database/sql"
 	"encoding/json"
 	"fmt"
+	"github.com/felixge/fgprof"
 	"html/template"
 	"io/ioutil"
 	"log"
@@ -282,7 +283,7 @@ func init() {
 }
 
 func main() {
-	// http.DefaultServeMux.Handle("/debug/fgprof/profile", fgprof.Handler())
+	http.DefaultServeMux.Handle("/debug/fgprof/profile", fgprof.Handler())
 	go func() {
 		log.Println(http.ListenAndServe(":6060", nil))
 	}()
